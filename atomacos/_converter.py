@@ -7,9 +7,11 @@ from ApplicationServices import (
     NSPointFromString,
     NSRangeFromString,
     NSSizeFromString,
+    NSRectFromString,
     kAXValueCFRangeType,
     kAXValueCGPointType,
     kAXValueCGSizeType,
+    kAXValueCGRectType,
 )
 from CoreFoundation import CFArrayGetTypeID, CFGetTypeID, CFStringGetTypeID
 
@@ -34,6 +36,8 @@ class Converter:
             return self.convert_point(value)
         if AXValueGetType(value) == kAXValueCFRangeType:
             return self.convert_range(value)
+        if AXValueGetType(value) == kAXValueCGRectType:
+            return self.convert_rect(value)
         else:
             return value
 
@@ -63,3 +67,10 @@ class Converter:
         range = NSRangeFromString(repr_searched)
 
         return CFRange(range.location, range.length)
+
+    def convert_rect(self, value):
+        repr_searched = re.search("{.*}", str(value)).group()
+        CGRect = namedtuple("CGRect", ["x", "y", "width", "height"])
+        rect = NSRectFromString(repr_searched)
+
+        return CGRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
