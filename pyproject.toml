@@ -53,7 +53,7 @@ test = [
     "pytest",
     "pytest-cov",
 ]
-doc = ["sphinx", "m2r"]
+doc = ["sphinx", "m2r2"]
 
 [tool.isort]
 multi_line_output=3
