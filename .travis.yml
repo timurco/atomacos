@@ -22,7 +22,7 @@ before_install:
 - before_install
 - set +e # undo set -e from multibuild
 install:
-- python -m pip install -U pip tox flit python-semantic-release
+- python -m pip install -U pip tox flit==2.2 flit_core==2.2 python-semantic-release
 script:
 - flit build
 - tox --installpkg dist/*.whl
