@@ -6,12 +6,12 @@ from ApplicationServices import (
     AXValueGetType,
     NSPointFromString,
     NSRangeFromString,
-    NSSizeFromString,
     NSRectFromString,
+    NSSizeFromString,
     kAXValueCFRangeType,
     kAXValueCGPointType,
-    kAXValueCGSizeType,
     kAXValueCGRectType,
+    kAXValueCGSizeType,
 )
 from CoreFoundation import CFArrayGetTypeID, CFGetTypeID, CFStringGetTypeID
 
