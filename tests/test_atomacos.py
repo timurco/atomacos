@@ -22,7 +22,7 @@ class TestAXUIElement:
         app_ref = NativeUIElement.getSystemObject()
         assert "System Wide" in str(app_ref.ref)
 
-    def test_app_with_windows(self):
+    def test_app_with_windows(self, automator_app):
         sut = NativeUIElement.getAnyAppWithWindow()
         assert len(sut.windows()) > 0
 
